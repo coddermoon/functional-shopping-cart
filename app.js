@@ -9,25 +9,38 @@ const updateCaseNumber = (isIncrased)=>{
     let caseNumber;
 
     if (isIncrased === true) {
-        const caseNumber = caseNumberPrevious + 1;
-    caseNumberFiled.value = caseNumber;
+ caseNumber = caseNumberPrevious + 1;
+    
     }else{
-        const caseNumber = caseNumberPrevious - 1;
-        caseNumberFiled.value = caseNumber; 
+         caseNumber = caseNumberPrevious - 1;
+        
+
     }
+    caseNumberFiled.value = caseNumber; 
+   
+   return caseNumber 
+}
+
+// caseUpdate-total Price
+
+const upDateTotalCasePrice = (caseNUmber)=>{
+    const totalCasePrice = caseNUmber * 59;
+    document.getElementById('case-total').innerText = totalCasePrice
 }
 
 // call all the function 
 document.getElementById('case-plus').addEventListener('click',()=>{
-    updateCaseNumber(true)
+   const caseNumber =  updateCaseNumber(true);
    
+   upDateTotalCasePrice(caseNumber)
     
 });
 
 
 // minus
 document.getElementById('case-minus').addEventListener('click',()=>{
-    updateCaseNumber(false)
+    const caseNumber =  updateCaseNumber(false)
+    upDateTotalCasePrice(caseNumber)
     
 });
 
